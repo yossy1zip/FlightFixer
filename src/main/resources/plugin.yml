@@ -1,0 +1,6 @@
+name: FlightFixer
+version: ${project.version}
+main: com.yiorno.flightfixer.FlightFixer
+api-version: 1.16
+prefix: F-Fix
+authors: [ yossy_zip ]
