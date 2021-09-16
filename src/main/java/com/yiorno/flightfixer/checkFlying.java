@@ -16,20 +16,31 @@ public class checkFlying {
             Boolean isFlight = player.hasPermission("mofucraft.member.flight.now");
             Boolean isAlloewdFlight = player.getAllowFlight();
 
-            if ((isStaff == false) && (isFlight == false) && (isAlloewdFlight == true)){
+            //スタッフ
+            if(!isStaff){
+                return;
+            }
 
-                player.setAllowFlight(false);
-                getLogger().info(player + "の飛行状態を修正しました");
+            //フライトを購入しているプレイヤー
+            if(!isFlight){
+                player.setAllowFlight(true);
+                return;
+            }
 
-                for (Player staff : Bukkit.getOnlinePlayers()) {
+            //飛べないプレイヤー
+            if(!isAlloewdFlight){
+                return;
+            }
 
-                    Boolean isStaff2 = staff.hasPermission("mofucraft.staff");
+            //スタッフではなく、フライトを購入しておらず、飛べるプレイヤー
+            player.setAllowFlight(false);
+            getLogger().info(player + "の飛行状態を修正しました");
 
-                    if (isStaff == true){
+            for (Player staff : Bukkit.getOnlinePlayers()) {
 
-                        player.sendMessage(ChatColor.GRAY + "" + player + "の飛行状態を修正しました");
+                if (isStaff){
 
-                    }
+                    player.sendMessage(ChatColor.GRAY + "" + player + "の飛行状態を修正しました");
 
                 }
 
