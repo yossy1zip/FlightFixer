@@ -13,22 +13,22 @@ public class checkFlying {
         for (Player player : Bukkit.getOnlinePlayers()) {
 
             Boolean isStaff = player.hasPermission("mofucraft.staff");
-            Boolean isFlight = player.hasPermission("mofucraft.member.flight.now");
-            Boolean isAlloewdFlight = player.getAllowFlight();
+            Boolean isMoFlight = player.hasPermission("mofucraft.member.flight.now");
+            Boolean isFlight = player.getAllowFlight();
 
             //スタッフ
-            if(!isStaff){
+            if(isStaff){
                 return;
             }
 
             //フライトを購入しているプレイヤー
-            if(!isFlight){
+            if(isMoFlight){
                 player.setAllowFlight(true);
                 return;
             }
 
             //飛べないプレイヤー
-            if(!isAlloewdFlight){
+            if(!isFlight){
                 return;
             }
 
